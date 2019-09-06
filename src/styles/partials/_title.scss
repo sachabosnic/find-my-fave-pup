@@ -1,0 +1,17 @@
+.dogApp {
+    @include flex (column, wrap, center, center);
+    
+    .title{
+        @include flex (column, nowrap, center, center);
+        min-height: 100vh;
+        width: 50%;
+        padding: 100px;
+        text-align: left;
+    }
+
+
+    .search {
+        @include flex (column, nowrap, center, left);
+        min-height: 100vh;
+    }
+}

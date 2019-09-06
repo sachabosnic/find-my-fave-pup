@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import InputForm from './components/inputForm';
-import './App.css';
+import './styles/app.css';
 
 class App extends Component {
 
@@ -14,6 +14,10 @@ class App extends Component {
   render() {
     return (
       <div className="dogApp">
+        <div className="title">
+          <h1>Pup Search</h1>
+          <h2>Find out everything there is to know about your favourite pups.</h2>
+        </div>
         <InputForm/>
       </div>
     );
