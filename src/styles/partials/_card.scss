@@ -1,0 +1,23 @@
+.card-set {
+    @include flex(row, wrap, center, top)
+} 
+
+.card {
+    padding: 20px;
+    border: 3px solid black;
+    width: 200px;
+    min-height: 200px;
+    margin: 15px;
+    button {
+        margin-top: 10px;
+        border: none;
+        background: black;
+        color: white;
+        padding: 5px 10px;
+    }
+
+    .breed {
+        font-size: 20px;
+        font-weight: 700;
+    }
+}

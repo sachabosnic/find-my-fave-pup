@@ -63,10 +63,13 @@ class InputForm extends Component {
   
     render() {
       return (
-        <div className="search">
+        <div className="search-card-container">
+        <div className="search" name="search">
             <label htmlFor="search">Type in your favourite dog breed!</label>
             <input type="text" id="search" onChange={this.handleChange} onKeyDown={this.handleEnterPress} placeholder="e.g. Golden Retriever"></input>
+        </div>
             {this.state.showDogCard === true ? <DogCard dogInfo = {this.state.dogCard} /> : null}
+
         </div>
       );
     }

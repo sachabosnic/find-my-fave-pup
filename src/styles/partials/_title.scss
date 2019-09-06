@@ -2,7 +2,7 @@
     @include flex (column, wrap, center, center);
     
     .title{
-        @include flex (column, nowrap, center, center);
+        @include flex (column, nowrap, center, left);
         min-height: 100vh;
         width: 50%;
         padding: 100px;
@@ -10,8 +10,18 @@
     }
 
 
-    .search {
-        @include flex (column, nowrap, center, left);
-        min-height: 100vh;
+    .search-button {
+        cursor: pointer;
+        animation-duration: 1.7s;
+        animation-iteration-count: infinite;
+        animation-name: bounce;
+        animation-timing-function: ease-in-out;
+    }
+
+    @keyframes bounce {
+        0%   { transform: translateY(0); }
+        30%  { transform: translateY(-10px); }
+        50%  { transform: translateY(0); }
+        100% { transform: translateY(0); }
     }
 }

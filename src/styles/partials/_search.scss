@@ -1,0 +1,27 @@
+.search-card-container {
+    min-height: 100vh;
+    padding-top: 100px;
+}
+
+.search {
+    label {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"]{
+        display: block;
+        margin: 0 auto;
+        max-width: 600px;
+        padding: 3px 5px;
+        border: 3px solid black;
+        background-color: lightcyan;
+        &:focus {
+            background-color: lightcyan;
+        }
+    }
+   
+    @include flex (column, nowrap, center, left);
+        
+  
+}

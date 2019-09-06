@@ -171,6 +171,10 @@ ul, li, p {
   margin: 0;
 }
 
+li {
+  list-style-type: none;
+}
+
 .dogApp {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -202,16 +206,110 @@ ul, li, p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
   min-height: 100vh;
   width: 50%;
   padding: 100px;
   text-align: left;
 }
 
-.dogApp .search {
+.dogApp .search-button {
+  cursor: pointer;
+  -webkit-animation-duration: 1.7s;
+          animation-duration: 1.7s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: bounce;
+          animation-name: bounce;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  30% {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+  50% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  30% {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+  50% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+.card-set {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: top;
+      -ms-flex-align: top;
+          align-items: top;
+}
+
+.card {
+  padding: 20px;
+  border: 3px solid black;
+  width: 200px;
+  min-height: 200px;
+  margin: 15px;
+}
+
+.card button {
+  margin-top: 10px;
+  border: none;
+  background: black;
+  color: white;
+  padding: 5px 10px;
+}
+
+.card .breed {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.search-card-container {
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
+.search {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -227,6 +325,23 @@ ul, li, p {
   -webkit-box-align: left;
       -ms-flex-align: left;
           align-items: left;
-  min-height: 100vh;
+}
+
+.search label {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.search input[type="text"] {
+  display: block;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 3px 5px;
+  border: 3px solid black;
+  background-color: lightcyan;
+}
+
+.search input[type="text"]:focus {
+  background-color: lightcyan;
 }
 /*# sourceMappingURL=app.css.map */

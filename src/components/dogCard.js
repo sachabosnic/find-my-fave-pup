@@ -32,7 +32,7 @@ class DogCard extends Component {
                     {this.props.dogInfo.map((dog, id) => {
                         return(
                         <li key={id} className="card">
-                            <p>Breed: {dog.name}</p>
+                            <p className="breed">{dog.name}</p>
                             <p>Size: {dog.weight.imperial} lbs</p> 
                             {this.state.index === id && this.state.toggle === true ? 
                                 <div className = "more-info">
