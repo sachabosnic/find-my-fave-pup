@@ -5,8 +5,10 @@
         @include flex (column, nowrap, center, left);
         min-height: 100vh;
         width: 50%;
-        padding: 100px;
+        padding: 50px;
+        padding-right: 0;
         text-align: left;
+        transform: translateX(-150px);
     }
 
 
@@ -23,5 +25,14 @@
         30%  { transform: translateY(-10px); }
         50%  { transform: translateY(0); }
         100% { transform: translateY(0); }
+    }
+    header {
+        position: relative;
+    }
+    svg {
+        position: absolute;
+        bottom: 0;
+        right: -160px;
+        height: 90%;
     }
 }
