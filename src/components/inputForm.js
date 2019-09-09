@@ -23,13 +23,12 @@ class InputForm extends Component {
       "borzoi",
       "bouvier",
       "boxer",
-      "brabancon",
       "briard",
       "bulldog",
       "boston",
       "english",
       "french",
-      "bullterrier",
+      "bull terrier",
       "staffordshire",
       "cairn",
       "cattledog",
@@ -43,7 +42,7 @@ class InputForm extends Component {
       "coonhound",
       "corgi",
       "cardigan",
-      "cotondetulear",
+      "coton de tulear",
       "dachshund",
       "dalmatian",
       "dane",
@@ -59,10 +58,10 @@ class InputForm extends Component {
       "eskimo",
       "frise",
       "bichon",
-      "germanshepherd",
+      "german shepherd",
       "greyhound",
       "italian",
-      "groenendael",
+      "kooikerhondje",
       "hound",
       "afghan",
       "basset",
@@ -85,7 +84,6 @@ class InputForm extends Component {
       "bull",
       "english",
       "tibetan",
-      "mexicanhairless",
       "mix",
       "mountain",
       "bernese",
@@ -99,7 +97,7 @@ class InputForm extends Component {
       "miniature",
       "pointer",
       "german",
-      "germanlonghair",
+      "german longhair",
       "pomeranian",
       "poodle",
       "miniature",
@@ -142,7 +140,7 @@ class InputForm extends Component {
       "welsh",
       "springer",
       "english",
-      "stbernard",
+      "saint bernard",
       "terrier",
       "american",
       "australian",
@@ -151,7 +149,6 @@ class InputForm extends Component {
       "dandie",
       "fox",
       "irish",
-      "kerryblue",
       "lakeland",
       "norfolk",
       "norwich",
@@ -161,18 +158,26 @@ class InputForm extends Component {
       "sealyham",
       "silky",
       "tibetan",
-      "toy",
-      "westhighland",
+      "west highland",
       "wheaten",
       "yorkshire",
       "vizsla",
       "weimaraner",
       "whippet",
       "wolfhound",
-      "irish"
+      "irish",
+      "shepherd",
+      "wiener"
       ],
-      autoList: []
+      autoList: [],
+      position: 0
     }
+  }
+
+  handleAutocomplete = (event) => {
+    this.setState({userSearch: event.target.id})
+    console.log(this.state.userSearch)
+    console.log(event.target.id)
   }
 
   handleChange = (event) => {
@@ -183,7 +188,7 @@ class InputForm extends Component {
         this.state.autoList.push(arr[i])
       }
     }
-    if (event.target.value === 'weiner' || event.target.value === 'wiener') {
+    if (event.target.value === 'wiener') {
       this.setState({
         userSearch: 'dachshund'
       })
@@ -194,11 +199,26 @@ class InputForm extends Component {
     }
   }
 
-  handleEnterPress = (event) => {
+  increment = () => {
+      let number = this.state.position
+      number++
+      this.setState({position: number})
+  }
+  
+
+  handleKeyPress = (event) => {
+    let position = this.state.position
+     
     if (event.which === 13) {
       this.handleSubmit(event)
+      this.setState({autoList: []})
     } else if (event.which !== 38 && event.which !== 40) {
       this.setState({autoList: []})
+    } else if (event.which === 40) {
+      this.increment()
+      let child = document.getElementById("autocomplete").childNodes[position].innerHTML;
+      console.log(child)
+      console.log(position)
     }
   }
 
@@ -212,7 +232,7 @@ class InputForm extends Component {
         dogCard: response.data,
       })
       this.getImage()
-      // console.log(response.data)
+      this.setState({userSearch: ''})
     }).catch(error => {  // If nothing matched, something went wrong on your end!
       console.log(error)
     })
@@ -222,7 +242,7 @@ class InputForm extends Component {
     this.state.dogCard.map((dog) => {
 
       axios.get(`https://api.thedogapi.com/v1/images/search?breed_id=${dog.id}`, { Headers: { 'x-api-key': 'ffee9488-c51c-42b6-aef3-384369b9b0f4' } }).then(response => {
-        // this.state.dogImages.push(...response.data)
+        
         const responseData = [...response.data];
         const dogImageObject = {};
 
@@ -250,17 +270,19 @@ class InputForm extends Component {
     })
   };
 
+  
+
   render() {
     return (
       <div className="search-card-container">
         <div className="search" name="search">
           <label htmlFor="search">Type in your favourite dog breed!</label>
           <div className="full-input">
-            <input type="text" id="search" onChange={this.handleChange} onKeyDown={this.handleEnterPress} placeholder="e.g. Golden Retriever"></input>
-            { this.state.userSearch.length > 0 ? <ul className="autocomplete">
-              {this.state.autoList.map(item => {
+            <input type="text" id="search" onChange={this.handleChange} onKeyDown={this.handleKeyPress} placeholder="e.g. Golden Retriever"></input>
+            {this.state.userSearch.length > 0 ? <ul id="autocomplete" className="autocomplete">
+              {this.state.autoList.map((item, n) => {
                 return(
-                  <li className="autocomplete-items">{item}</li>
+                  <li key={`${n}`} id={`${item}`} className="autocomplete-items" onMouseOver={this.handleAutocomplete} onClick={this.handleSubmit}>{item}</li>
                 )
               })} 
             </ul> : null}

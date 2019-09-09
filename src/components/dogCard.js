@@ -37,7 +37,7 @@ class DogCard extends Component {
                                 </li>)
                         })}
                     </ul> :
-                    <p>Sorry, that yielded no results. Did you mean ?</p>}
+                    <p>Sorry, that yielded no results.</p>}
             </div>
         );
     }
