@@ -1,14 +1,21 @@
 .dogApp {
     @include flex (column, wrap, center, center);
-    
+    h1 {
+        font-size: 4rem;
+        margin: 10px 0;
+    }
+
+    i {
+        font-size: 2rem;
+        &:hover {
+            color: rgb(255, 173, 51);
+            transition: 0.3s;
+        }
+    }
     .title{
-        @include flex (column, nowrap, center, left);
+        @include flex (column, nowrap, center, flex-start);
         min-height: 100vh;
-        width: 50%;
-        padding: 50px;
-        padding-right: 0;
-        text-align: left;
-        transform: translateX(-150px);
+        padding: 75px;
     }
 
 
@@ -27,12 +34,13 @@
         100% { transform: translateY(0); }
     }
     header {
-        position: relative;
+        @include flex(row, nowrap, center, flex-end);
+        width: 95vw;
+        overflow: hidden;
     }
     svg {
-        position: absolute;
-        bottom: 0;
-        right: -160px;
-        height: 90%;
+        min-width: 40%;
+        max-width: 50%;
+        align-self: flex-end;
     }
 }

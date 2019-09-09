@@ -12,16 +12,28 @@
     input[type="text"]{
         display: block;
         margin: 0 auto;
-        max-width: 600px;
+        width: 100%;
         padding: 3px 5px;
         border: 3px solid black;
-        background-color: lightcyan;
+        background-color: rgba(255, 173, 51, 0.1);
         &:focus {
-            background-color: lightcyan;
+            background-color: rgba(255, 173, 51, 0.3);
         }
     }
    
     @include flex (column, nowrap, center, left);
         
-  
+    .full-input {
+        margin: 0 auto;
+        width: 200px;
+        .autocomplete{
+            width: 100%;
+            border: 3px solid black;
+            border-top: none; 
+        }
+        .autocomplete-items{
+            width: 100%;
+            background: rgba(255, 173, 51, 0.3);
+        }
+    }
 }
