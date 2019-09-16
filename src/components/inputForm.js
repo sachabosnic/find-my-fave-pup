@@ -91,7 +91,7 @@ class InputForm extends Component {
       "newfoundland",
       "otterhound",
       "papillon",
-      "pekinese",
+      "pekingese",
       "pembroke",
       "pinscher",
       "miniature",
@@ -110,7 +110,7 @@ class InputForm extends Component {
       "retriever",
       "chesapeake",
       "curly",
-      "flatcoated",
+      "flat-coated",
       "golden",
       "ridgeback",
       "rhodesian",
@@ -129,7 +129,7 @@ class InputForm extends Component {
       "english",
       "shetland",
       "shiba",
-      "shihtzu",
+      "shih tzu",
       "spaniel",
       "blenheim",
       "brittany",
@@ -167,7 +167,8 @@ class InputForm extends Component {
       "wolfhound",
       "irish",
       "shepherd",
-      "wiener"
+      "wiener",
+      "havanese"
       ],
       autoList: [],
       position: 0
@@ -175,7 +176,14 @@ class InputForm extends Component {
   }
 
   handleAutocomplete = (event) => {
-    this.setState({userSearch: event.target.id})
+    this.setState({userSearch: event.target.id, position: 0})
+    
+    const elements = document.querySelectorAll('.autocomplete-items.highlighted')
+    
+      for (let i = 0; i < elements.length; i++) {
+        elements[i].classList.remove('highlighted')
+      }
+
     console.log(this.state.userSearch)
     console.log(event.target.id)
   }
@@ -197,28 +205,63 @@ class InputForm extends Component {
         userSearch: event.target.value,
       })
     }
+    this.setState({position: 0})
   }
 
-  increment = () => {
-      let number = this.state.position
-      number++
-      this.setState({position: number})
-  }
-  
 
   handleKeyPress = (event) => {
-    let position = this.state.position
-     
+    const {position, autoList} = this.state
     if (event.which === 13) {
+      
       this.handleSubmit(event)
       this.setState({autoList: []})
+      
     } else if (event.which !== 38 && event.which !== 40) {
+      
       this.setState({autoList: []})
-    } else if (event.which === 40) {
-      this.increment()
-      let child = document.getElementById("autocomplete").childNodes[position].innerHTML;
-      console.log(child)
-      console.log(position)
+      
+    } else if (event.which === 38 || event.which === 40) {
+      this.navigateList(event, position, autoList)
+    }
+  }
+
+  
+  navigateList = (e, position, autoList) => {
+    let child = document.getElementById("autocomplete").childNodes[position];
+    if (autoList.length > 0) {
+      if (e.which === 40 && position < autoList.length && position >= 0) {
+        this.setState( prevState => ({
+          position: prevState.position += 1
+        }))
+        const elements = document.querySelectorAll('.autocomplete-items.highlighted')
+        for (let i = 0; i < elements.length; i++) {
+          elements[i].classList.remove('highlighted')
+        }
+        if (position === autoList.length - 1) {
+          this.setState({
+            position: 0
+          })
+        }
+        child.classList.add('highlighted')
+      } else if (e.which === 38 && position >= 0) {
+        this.setState( prevState => ({
+          position: prevState.position -= 1
+        }))
+        const elements = document.querySelectorAll('.autocomplete-items.highlighted')
+        for (let i = 0; i < elements.length; i++) {
+          elements[i].classList.remove('highlighted')
+        }
+        if (position === 0) {
+          this.setState({
+            position: autoList.length - 1
+          })
+        }
+        child.classList.add('highlighted')
+      } 
+      if (typeof child !== undefined) {
+        this.setState({userSearch: child.innerHTML})
+      }
+      console.log(`user clicked ${e.which} and is at position ${position} and has item name of ${child.innerHTML}`)
     }
   }
 
@@ -282,7 +325,7 @@ class InputForm extends Component {
             {this.state.userSearch.length > 0 ? <ul id="autocomplete" className="autocomplete">
               {this.state.autoList.map((item, n) => {
                 return(
-                  <li key={`${n}`} id={`${item}`} className="autocomplete-items" onMouseOver={this.handleAutocomplete} onClick={this.handleSubmit}>{item}</li>
+                  <li key={n} id={`${item}`} name={n} className="autocomplete-items" onMouseOver={this.handleAutocomplete} onClick={this.handleSubmit}>{item}</li>
                 )
               })} 
             </ul> : null}

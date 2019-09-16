@@ -37,7 +37,7 @@ class DogCard extends Component {
                                 </li>)
                         })}
                     </ul> :
-                    <p>Sorry, that yielded no results.</p>}
+                    <p className="warning-msg">Sorry, it seems that query didn't match any pups in the database. Please try something else!</p>}
             </div>
         );
     }

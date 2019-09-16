@@ -1,7 +1,12 @@
 .card-set {
     @include flex(row, wrap, center, top)
 } 
-
+.card-container {
+    .warning-msg {
+        margin-top: 10px;
+        text-align: center;
+    }
+}
 .card {
     padding: 20px;
     border: 3px solid black;
