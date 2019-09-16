@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/katbosnic/find-my-fave-pup.git/static/css/main.ff430a5a.chunk.css",
-    "main.js": "/katbosnic/find-my-fave-pup.git/static/js/main.73266bec.chunk.js",
-    "main.js.map": "/katbosnic/find-my-fave-pup.git/static/js/main.73266bec.chunk.js.map",
-    "runtime~main.js": "/katbosnic/find-my-fave-pup.git/static/js/runtime~main.09fc8ccd.js",
-    "runtime~main.js.map": "/katbosnic/find-my-fave-pup.git/static/js/runtime~main.09fc8ccd.js.map",
-    "static/js/2.6ac360d5.chunk.js": "/katbosnic/find-my-fave-pup.git/static/js/2.6ac360d5.chunk.js",
-    "static/js/2.6ac360d5.chunk.js.map": "/katbosnic/find-my-fave-pup.git/static/js/2.6ac360d5.chunk.js.map",
-    "index.html": "/katbosnic/find-my-fave-pup.git/index.html",
-    "precache-manifest.acc2408ff9c54fcd89d03d46aefc5fd5.js": "/katbosnic/find-my-fave-pup.git/precache-manifest.acc2408ff9c54fcd89d03d46aefc5fd5.js",
-    "service-worker.js": "/katbosnic/find-my-fave-pup.git/service-worker.js",
-    "static/css/main.ff430a5a.chunk.css.map": "/katbosnic/find-my-fave-pup.git/static/css/main.ff430a5a.chunk.css.map"
+    "main.css": "/katbosnic/find-my-fave-pup/static/css/main.ff430a5a.chunk.css",
+    "main.js": "/katbosnic/find-my-fave-pup/static/js/main.0e727ef6.chunk.js",
+    "main.js.map": "/katbosnic/find-my-fave-pup/static/js/main.0e727ef6.chunk.js.map",
+    "runtime~main.js": "/katbosnic/find-my-fave-pup/static/js/runtime~main.688efc7c.js",
+    "runtime~main.js.map": "/katbosnic/find-my-fave-pup/static/js/runtime~main.688efc7c.js.map",
+    "static/js/2.6ac360d5.chunk.js": "/katbosnic/find-my-fave-pup/static/js/2.6ac360d5.chunk.js",
+    "static/js/2.6ac360d5.chunk.js.map": "/katbosnic/find-my-fave-pup/static/js/2.6ac360d5.chunk.js.map",
+    "index.html": "/katbosnic/find-my-fave-pup/index.html",
+    "precache-manifest.13e1ac7a118526a850eb827f35f932f6.js": "/katbosnic/find-my-fave-pup/precache-manifest.13e1ac7a118526a850eb827f35f932f6.js",
+    "service-worker.js": "/katbosnic/find-my-fave-pup/service-worker.js",
+    "static/css/main.ff430a5a.chunk.css.map": "/katbosnic/find-my-fave-pup/static/css/main.ff430a5a.chunk.css.map"
   }
 }
