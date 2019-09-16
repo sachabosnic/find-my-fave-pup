@@ -180,12 +180,9 @@ class InputForm extends Component {
     
     const elements = document.querySelectorAll('.autocomplete-items.highlighted')
     
-      for (let i = 0; i < elements.length; i++) {
-        elements[i].classList.remove('highlighted')
-      }
-
-    console.log(this.state.userSearch)
-    console.log(event.target.id)
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.remove('highlighted')
+    }
   }
 
   handleChange = (event) => {
@@ -261,7 +258,7 @@ class InputForm extends Component {
       if (typeof child !== undefined) {
         this.setState({userSearch: child.innerHTML})
       }
-      console.log(`user clicked ${e.which} and is at position ${position} and has item name of ${child.innerHTML}`)
+      // console.log(`user clicked ${e.which} and is at position ${position} and has item name of ${child.innerHTML}`)
     }
   }
 
@@ -321,11 +318,11 @@ class InputForm extends Component {
         <div className="search" name="search">
           <label htmlFor="search">Type in your favourite dog breed!</label>
           <div className="full-input">
-            <input type="text" id="search" onChange={this.handleChange} onKeyDown={this.handleKeyPress} placeholder="e.g. Golden Retriever"></input>
+            <input type="text" value={`${this.state.userSearch}`} id="search" onChange={this.handleChange} onKeyDown={this.handleKeyPress} placeholder="e.g. Golden Retriever"></input>
             {this.state.userSearch.length > 0 ? <ul id="autocomplete" className="autocomplete">
               {this.state.autoList.map((item, n) => {
                 return(
-                  <li key={n} id={`${item}`} name={n} className="autocomplete-items" onMouseOver={this.handleAutocomplete} onClick={this.handleSubmit}>{item}</li>
+                  <li key={n} id={`${item}`} className="autocomplete-items" onMouseOver={this.handleAutocomplete} onClick={this.handleSubmit}>{item}</li>
                 )
               })} 
             </ul> : null}
