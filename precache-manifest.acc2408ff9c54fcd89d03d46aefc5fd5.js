@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2ad9a1a0393d5407634169cca92381bf",
+    "revision": "352c779c590e8c61fb106c97ec0f92cf",
     "url": "/katbosnic/find-my-fave-pup.git/index.html"
   },
   {

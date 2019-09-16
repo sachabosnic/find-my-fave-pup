@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/katbosnic/find-my-fave-pup.git/precache-manifest.7196c6c86e32e3d9239810f5bc07a1f4.js"
+  "/katbosnic/find-my-fave-pup.git/precache-manifest.acc2408ff9c54fcd89d03d46aefc5fd5.js"
 );
 
 self.addEventListener('message', (event) => {
