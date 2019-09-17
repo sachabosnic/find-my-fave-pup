@@ -171,7 +171,7 @@ class InputForm extends Component {
       "havanese"
       ],
       autoList: [],
-      position: 0
+      position: -1
     }
   }
 
@@ -202,63 +202,68 @@ class InputForm extends Component {
         userSearch: event.target.value,
       })
     }
-    this.setState({position: 0})
+    this.setState({position: -1})
   }
 
-
   handleKeyPress = (event) => {
-    const {position, autoList} = this.state
+    let {position, autoList} = this.state
     if (event.which === 13) {
       
       this.handleSubmit(event)
-      this.setState({autoList: []})
+      this.setState({autoList: [], position: -1})
       
     } else if (event.which !== 38 && event.which !== 40) {
       
-      this.setState({autoList: []})
+      this.setState({autoList: [], position: -1})
       
-    } else if (event.which === 38 || event.which === 40) {
-      this.navigateList(event, position, autoList)
+    } else if (event.which === 38) {
+      if (position === 0) {
+        this.setState({
+          position: autoList.length
+        })
+      }
+      this.setState( prevState => ({
+        position: prevState.position - 1
+      }))
+    } else if (event.which === 40) {
+      if (position === autoList.length - 1) {
+        this.setState({
+          position: -1
+        })
+      }
+      this.setState( prevState => ({
+        position: prevState.position + 1
+      }))
     }
   }
-
   
-  navigateList = (e, position, autoList) => {
-    let child = document.getElementById("autocomplete").childNodes[position];
-    if (autoList.length > 0) {
-      if (e.which === 40 && position < autoList.length && position >= 0) {
-        this.setState( prevState => ({
-          position: prevState.position += 1
-        }))
-        const elements = document.querySelectorAll('.autocomplete-items.highlighted')
-        for (let i = 0; i < elements.length; i++) {
-          elements[i].classList.remove('highlighted')
+  handleKeyUp = (e) => {
+    let {position, autoList} = this.state
+    if (typeof autoList !== undefined){
+      if(autoList.length > 0) {
+        if (document.getElementById("autocomplete")) {
+          let child = document.getElementById("autocomplete").childNodes[position];
+          if (e.which === 40 && position < autoList.length && position >= 0) {
+            const elements = document.querySelectorAll('.autocomplete-items.highlighted')
+            for (let i = 0; i < elements.length; i++) {
+              elements[i].classList.remove('highlighted')
+            }
+            child.classList.add('highlighted')
+            if (typeof child !== undefined) {
+              this.setState({userSearch: child.innerHTML})
+            }
+          } else if (e.which === 38 && position >= 0) {
+            const elements = document.querySelectorAll('.autocomplete-items.highlighted')
+            for (let i = 0; i < elements.length; i++) {
+              elements[i].classList.remove('highlighted')
+            }
+            child.classList.add('highlighted')
+            if (typeof child !== undefined) {
+              this.setState({userSearch: child.innerHTML})
+            }
+          } 
         }
-        if (position === autoList.length - 1) {
-          this.setState({
-            position: 0
-          })
-        }
-        child.classList.add('highlighted')
-      } else if (e.which === 38 && position >= 0) {
-        this.setState( prevState => ({
-          position: prevState.position -= 1
-        }))
-        const elements = document.querySelectorAll('.autocomplete-items.highlighted')
-        for (let i = 0; i < elements.length; i++) {
-          elements[i].classList.remove('highlighted')
-        }
-        if (position === 0) {
-          this.setState({
-            position: autoList.length - 1
-          })
-        }
-        child.classList.add('highlighted')
-      } 
-      if (typeof child !== undefined) {
-        this.setState({userSearch: child.innerHTML})
       }
-      // console.log(`user clicked ${e.which} and is at position ${position} and has item name of ${child.innerHTML}`)
     }
   }
 
@@ -318,7 +323,7 @@ class InputForm extends Component {
         <div className="search" name="search">
           <label htmlFor="search">Type in your favourite dog breed!</label>
           <div className="full-input">
-            <input type="text" value={`${this.state.userSearch}`} id="search" onChange={this.handleChange} onKeyDown={this.handleKeyPress} placeholder="e.g. Golden Retriever"></input>
+            <input type="text" value={`${this.state.userSearch}`} id="search" onChange={this.handleChange} onKeyDown={this.handleKeyPress} onKeyUp={this.handleKeyUp} placeholder="e.g. Golden Retriever"></input>
             {this.state.userSearch.length > 0 ? <ul id="autocomplete" className="autocomplete">
               {this.state.autoList.map((item, n) => {
                 return(
