@@ -3,6 +3,11 @@
     h1 {
         font-size: 4rem;
         margin: 10px 0;
+        @include media (960px) {
+            font-size: 3rem;
+            margin: 0;
+        }
+        
     }
 
     i {
@@ -16,6 +21,19 @@
         @include flex (column, nowrap, center, flex-start);
         min-height: 100vh;
         padding: 75px;
+        @include media (1024px) {
+            padding-right: 0px;
+        }
+        @include media(825px) {
+            min-height: 40vh;
+        }
+        @include media (825px) {
+            padding-right: 75px;
+        }
+        @include media (428px) {
+            padding: 20px;
+        }
+        
     }
 
 
@@ -37,10 +55,23 @@
         @include flex(row, nowrap, center, flex-end);
         width: 95vw;
         overflow: hidden;
+        @include media(825px) {
+            flex-direction: column;
+            align-items: center;
+        }
     }
     svg {
         min-width: 40%;
-        max-width: 50%;
+        
         align-self: flex-end;
+        @include media(1024px) {
+            min-width: 55%;
+        }
+        @include media (825px) {
+            height: calc(60vh - 147px);
+            margin: 41px auto;
+        }
+        
+       
     }
 }
